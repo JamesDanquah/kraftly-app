@@ -2,38 +2,38 @@ import React from 'react';
 import { cn } from '../lib/utils';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'default' | 'primary' | 'secondary' | 'accent' | 'ghost';
-  size?: 'default' | 'lg';
+  variant?: 'primary' | 'secondary' | 'accent' | 'ghost';
+  size?: 'default' | 'lg' | 'wide';
 }
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = 'default', size = 'default', ...props }, ref) => {
-    const variants = {
-      default: 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-700',
-      primary: 'bg-indigo-600 text-white hover:bg-indigo-500 shadow-lg shadow-indigo-500/20',
-      secondary: 'bg-zinc-200 dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 hover:bg-zinc-300 dark:hover:bg-zinc-600',
-      accent: 'bg-orange-500 text-white hover:bg-orange-400 shadow-lg shadow-orange-500/20',
-      ghost: 'bg-transparent text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800',
-    };
+export const Button: React.FC<ButtonProps> = ({ 
+  children, 
+  className, 
+  variant = 'primary', 
+  size = 'default',
+  ...props 
+}) => {
+  const baseStyles = "relative overflow-hidden rounded-2xl font-medium transition-all duration-200 active:scale-95 flex items-center justify-center select-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-transparent";
+  
+  const variants = {
+    primary: "bg-white/80 dark:bg-zinc-800/80 text-zinc-900 dark:text-white hover:bg-white dark:hover:bg-zinc-700 shadow-sm backdrop-blur-sm border border-white/20 dark:border-zinc-700/50",
+    secondary: "bg-zinc-200/50 dark:bg-zinc-700/30 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700/50 border border-transparent",
+    accent: "bg-indigo-500 text-white hover:bg-indigo-600 shadow-lg shadow-indigo-500/25 border border-indigo-400/20",
+    ghost: "bg-transparent text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800/50 hover:text-zinc-900 dark:hover:text-white",
+  };
 
-    const sizes = {
-      default: 'h-16 text-xl rounded-2xl',
-      lg: 'h-20 text-2xl rounded-3xl',
-    };
+  const sizes = {
+    default: "h-16 w-16 text-xl",
+    lg: "h-20 w-20 text-2xl",
+    wide: "h-16 col-span-2 w-full text-xl",
+  };
 
-    return (
-      <button
-        ref={ref}
-        className={cn(
-          'relative flex items-center justify-center font-medium transition-all duration-200 active:scale-95 outline-none focus-visible:ring-2 focus-visible:ring-indigo-500',
-          variants[variant],
-          sizes[size],
-          className
-        )}
-        {...props}
-      />
-    );
-  }
-);
-
-Button.displayName = 'Button';
+  return (
+    <button 
+      className={cn(baseStyles, variants[variant], sizes[size], className)}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
