@@ -1,38 +1,40 @@
 # Lumina Calc
 
-A modern, high-performance calculator application built with React, TypeScript, and Tailwind CSS.
+A modern, highly aesthetic calculator application built with React, TypeScript, and Tailwind CSS.
 
 ## Features
 
-- **Modern UI**: Glassmorphic effects, smooth transitions, and a premium mobile-first aesthetic.
-- **Dark/Light Mode**: Fully responsive theme switching.
-- **History Tape**: Slide-out panel to view and restore previous calculations.
+- **Standard Operations**: Addition, subtraction, multiplication, division.
+- **Advanced Features**: Percentages, sign toggling, decimal support.
+- **History Tracking**: View and clear your calculation history.
 - **Keyboard Support**: Full keyboard accessibility for rapid entry.
-- **Responsive**: Optimized for both desktop and touch devices.
+- **Visual Design**: 
+  - Glassmorphism UI with backdrop blur.
+  - Smooth gradients and shadows.
+  - Responsive dark/light mode.
+  - Fluid animations.
 
 ## Tech Stack
 
-- React 18
-- TypeScript
-- Tailwind CSS
-- Lucide React (Icons)
-- clsx & tailwind-merge (Class utilities)
+- **React**: UI Library
+- **TypeScript**: Type safety
+- **Tailwind CSS**: Styling
+- **Lucide React**: Icons
+- **CLSX & Tailwind Merge**: Class utility management
 
-## Getting Started
+## Setup
 
 1. Install dependencies:
    ```bash
    npm install
    ```
 
-2. Run the development server:
+2. Start the development server:
    ```bash
    npm start
    ```
 
-## Usage
-
-- Use the on-screen keypad or your physical keyboard.
-- Click the History icon (clock) to view past calculations.
-- Tap a history item to load the result back into the display.
-- Toggle the theme using the sun/moon switch.
+3. Build for production:
+   ```bash
+   npm run build
+   ```
